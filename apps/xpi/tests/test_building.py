@@ -490,8 +490,8 @@ require('b');
         assert not os.path.isfile('%s.xpi' % self.target_basename)
         assert os.path.exists('%s.json' % self.target_basename)
 
-    def test_building_xpi_with_1_12(self):
-        sdk = SDK.objects.create(version='1.12', dir='addon-sdk-1.12')
+    def test_building_xpi(self):
+        sdk = SDK.objects.create(version=settings.LOWEST_APPROVED_SDK, dir=settings.TEST_SDK)
         package = Package.objects.create(author=self.author, type='a')
 
         tstart = time.time()

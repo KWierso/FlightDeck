@@ -523,7 +523,7 @@ class PackageRevisionTest(TestCase):
         assert os.path.isfile(self.zip_file)
 
     def test_create_package_with_no_libs_in_sdk(self):
-        sdk = SDK.objects.create(version='1.12', dir='addon-sdk-1.12')
+        sdk = SDK.objects.create(version=settings.LOWEST_APPROVED_SDK, dir=settings.TEST_SDK)
         package = Package.objects.create(author=self.author, type='a')
         eq_(package.latest.sdk.id, sdk.id)
 
